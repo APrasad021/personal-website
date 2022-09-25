@@ -3,7 +3,7 @@ import styles from '../styles/navbar.module.css';
 import { ReactNode } from 'react';
 
 type Props = {
-  children: ReactNode,
+  children?: ReactNode,
 }
 
 function NavBar() {
