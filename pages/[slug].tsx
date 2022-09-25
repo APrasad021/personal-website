@@ -1,5 +1,5 @@
 import Head from "next/head";
-import client from "../apollo-client";
+import client from "../util/apollo-client";
 import { GET_PAGES, GET_PAGE_QUERY } from "../util/queries";
 import { PageData } from "../util/types";
 

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import client from "../../apollo-client";
+import client from "../../util/apollo-client";
 import { GET_POST, GET_POSTS_SLUGS } from "../../util/queries";
 import { PostData, PostsConnectionData, SlugParam } from "../../util/types";
 

@@ -1,4 +1,4 @@
-import client from "../apollo-client";
+import client from "../util/apollo-client";
 import { GET_POSTS } from "../util/queries";
 import Link from 'next/link';
 import { PostsConnectionData, PostsConnections } from "../util/types";

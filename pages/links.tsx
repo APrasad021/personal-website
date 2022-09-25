@@ -1,4 +1,4 @@
-import client from "../apollo-client";
+import client from "../util/apollo-client";
 import { GET_PAGE_QUERY } from "../util/queries";
 import Link from 'next/link';
 import Head from "next/head";
