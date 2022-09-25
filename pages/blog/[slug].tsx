@@ -1,7 +1,7 @@
 import Head from "next/head";
 import client from "../../apollo-client";
-import { GET_POST, GET_POSTS_SLUGS } from "../../queries";
-import { PostData, PostsConnectionData, SlugParam } from "../../types";
+import { GET_POST, GET_POSTS_SLUGS } from "../../util/queries";
+import { PostData, PostsConnectionData, SlugParam } from "../../util/types";
 
 import styles from "../../styles/blogpost.module.css";
 

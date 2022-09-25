@@ -1,7 +1,7 @@
 import Head from "next/head";
 import client from "../apollo-client";
-import { GET_PAGES, GET_PAGE_QUERY } from "../queries";
-import { PageData } from "../types";
+import { GET_PAGES, GET_PAGE_QUERY } from "../util/queries";
+import { PageData } from "../util/types";
 
 import styles from "../styles/page.module.css";
 
