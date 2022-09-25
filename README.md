@@ -5,10 +5,10 @@ CMS: [Hygraph](https://hygraph.com/)
 
 ## Future Improvements
 
-[ ] Add Pictures to Homepage
+- [ ] Add Pictures to Homepage
 
-[ ] Add Pictures to Blog Posts
+- [ ] Add Pictures to Blog Posts
 
-[ ] SEO Optimize Pages
+- [ ] SEO Optimize Pages
 
-[ ] Add Books Section
+- [ ] Add Books Section
