@@ -6,6 +6,8 @@
 
 **Hosting and Deployment**: [Vercel](https://vercel.com/)
 
+**Analytics**: [Google Analytics](https://analytics.google.com/), [Next.js](https://nextjs.org/analytics)
+
 ## Future Improvements
 
 - [ ] Add Pictures to Homepage
