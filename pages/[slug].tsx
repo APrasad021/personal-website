@@ -26,6 +26,12 @@ export default function Page(props: Props) {
         <div className={styles.container}>
             <Head>
                 <title>{props.page.title}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta name="description" content="Hello, welcome to my shared space" />
+                <meta property="og:title" content={props.page.title} />
+                <meta property="og:description" content="Hello, welcome to my shared space" />
+                <meta property="og:url" content={`https://ashwinprasad.dev/${props.page.title}`} />
+                <meta property="og:type" content="website" />
             </Head>
             <div dangerouslySetInnerHTML={{ __html: props.page.content.html }} className={styles.content} />
             {showLastUpdatedFooter && <p className={styles.lastupdated}>Last updated {new Date(props.page.updatedAt).toDateString()}</p>}

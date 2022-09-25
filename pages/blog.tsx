@@ -11,6 +11,12 @@ export default function Blog(props: PostsConnections) {
         <div className={styles.container}>
             <Head>
                 <title>Blog</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta name="description" content="Hello, welcome to my blog" />
+                <meta property="og:title" content="Blog" />
+                <meta property="og:description" content="Hello, welcome to my blog" />
+                <meta property="og:url" content="https://ashwinprasad.dev/blog" />
+                <meta property="og:type" content="website" />
             </Head>
             {props.posts.map((post: PostsConnectionData) => (
                 <div className={styles.blogitem} key={post.node.slug}>

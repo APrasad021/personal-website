@@ -14,11 +14,17 @@ export default function PostPage(props: Props) {
     const createdAt = new Date(props.post.createdAt).toDateString();
     const updatedAt = new Date(props.post.updatedAt).toDateString();
     const showLastUpdatedFooter = createdAt !== updatedAt;
-    
+
     return (
         <div className={styles.container}>
             <Head>
                 <title>{props.post.title}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta name="description" content="Hello, welcome to my blog post" />
+                <meta property="og:title" content={props.post.title} />
+                <meta property="og:description" content="Hello, welcome to my blog post" />
+                <meta property="og:url" content={`https://ashwinprasad.dev/blog/${props.post.title}`} />
+                <meta property="og:type" content="website" />
             </Head>
             <h1 className={styles.title}>{props.post.title}</h1>
             <h3 className={styles.timestamp}>{new Date(props.post.createdAt).toDateString()}</h3>
