@@ -1,16 +1,68 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+* {
+  box-sizing: border-box;
 }
 
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: #FFFCF4;
+
+}
+
+a {
+  text-decoration: none;
+  color: #2b6cc2;
+}
+
+a:visited {
+  color: #a769a7;
+}
+
+a:hover {
+  text-decoration: line-through;
+}
+
+@media only screen and (min-width: 768px) {
+  a {
+      display: inline-block;
+      -webkit-transform: perspective(1px) translateZ(0);
+      transform: perspective(1px) translateZ(0);
+      -webkit-transition-duration: 0.15s;
+      transition-duration: 0.15s;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+  }
+  a:hover {
+      transform: scale(1.02);
+  }
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  color: #111; 
+  font-family: 'Helvetica Neue', sans-serif !important; 
+  font-weight: bold; 
+  letter-spacing: 0.25px; 
+  line-height: 1;
+  padding-bottom: 8px;
+}
+
+h3 {
+  padding-bottom: 8px;
+}
+
+ul {
+  list-style-type: disclosure-closed;
+  margin-left: 12px;
+}
+
+li {
+  padding-bottom: 4px;
 }

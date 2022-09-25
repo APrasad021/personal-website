@@ -1,8 +1,15 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app';
+import NavBarWrapper from '../components/NavBar';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <div suppressHydrationWarning>
+      <NavBarWrapper>
+      {typeof window === 'undefined' ? null : <Component {...pageProps} />}
+      </NavBarWrapper>
+    </div>
+  );
 }
 
-export default MyApp
+export default App;

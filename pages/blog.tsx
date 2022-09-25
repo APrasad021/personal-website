@@ -1,0 +1,41 @@
+import client from "../apollo-client";
+import { GET_POSTS } from "../queries";
+import Link from 'next/link';
+import { PostsConnectionData, PostsConnections } from "../types";
+import Head from "next/head";
+
+import styles from "../styles/blog.module.css";
+
+export default function Blog(props: PostsConnections) {
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>Blog</title>
+            </Head>
+            {props.posts.map((post: PostsConnectionData) => (
+                <div className={styles.blogitem} key={post.node.slug}>
+                    <h3 className={styles.title}><Link href={`/blog/${post.node.slug}`}>
+                    <a>
+                    {post.node.title}
+                        </a>
+                    </Link></h3>
+                    <p className={styles.timestamp}>{new Date(post.node.createdAt).toDateString()}</p>
+                </div>  
+            ))}
+        </div>
+    )
+    };
+
+
+export async function getStaticProps() {
+    const { data } = await client.query({
+        query: GET_POSTS,
+    });
+
+
+    return {
+        props: {
+        posts: data.postsConnection.edges,
+        },
+    };
+}
