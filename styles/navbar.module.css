@@ -1,12 +1,21 @@
+@media (max-width: 200px) {
+  .navbarcontainer {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .homelink {
+    pointer-events: none;
+  }
+}
+
 .navbarcontainer {
   float: right;
   text-align: right;
   padding: 16px;
   padding-right: 28px;
   display: grid;
-  @media (max-width: 200px) {
-    display: none;
-  }
   width: 100%;
 }
 
@@ -17,9 +26,6 @@
 
 .homelink {
   all: unset;
-  @media (max-width: 500px) {
-    pointer-events: none;
-  }
 }
 
 .homelink a {
@@ -29,5 +35,11 @@
 
 .homelink a:hover {
   /* remove animation from navbar links */
+  color: black;
   all: unset;
+}
+
+.homelink a:visited {
+  /* remove animation from navbar links */
+  color: black;
 }
