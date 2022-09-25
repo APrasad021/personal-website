@@ -1,46 +1,44 @@
 .container {
-    display: block;
-    float: left;
-    padding-left: 7.5%;
-    padding-right: 7.5%;
-    padding-top: 2.5%;
+  display: block;
+  float: left;
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+  padding-top: 2.5%;
 }
 
 .title {
-    font-size: 48px;
-        
+  font-size: 48px;
 }
 
 @media (max-width: 768px) {
-    .title {
-        font-size: 32px;
-    }
-    
+  .title {
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 600px) {
-    .title {
-        font-size: 28px;
-    }
+  .title {
+    font-size: 28px;
+  }
 }
 
 .timestamp {
-    margin: 0px;
-    min-width: 0px;
-    font-size: 14px;
-    font-weight: lighter;
-    padding-bottom: 16px;
-    color: gray;
+  margin: 0px;
+  min-width: 0px;
+  font-size: 14px;
+  font-weight: lighter;
+  padding-bottom: 16px;
+  color: gray;
 }
 
 .content p {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .lastupdated {
-    text-align: right;
-    padding-bottom: 8px;
-    color: gray;
-    font-size: small;
-    font-weight: lighter;
+  text-align: right;
+  padding-bottom: 8px;
+  color: gray;
+  font-size: small;
+  font-weight: lighter;
 }

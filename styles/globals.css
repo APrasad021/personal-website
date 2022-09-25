@@ -9,8 +9,7 @@
 }
 
 body {
-  background: #FFFCF4;
-
+  background: #fffcf4;
 }
 
 a {
@@ -28,16 +27,16 @@ a:hover {
 
 @media only screen and (min-width: 768px) {
   a {
-      display: inline-block;
-      -webkit-transform: perspective(1px) translateZ(0);
-      transform: perspective(1px) translateZ(0);
-      -webkit-transition-duration: 0.15s;
-      transition-duration: 0.15s;
-      -webkit-transition-property: transform;
-      transition-property: transform;
+    display: inline-block;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-duration: 0.15s;
+    transition-duration: 0.15s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
   }
   a:hover {
-      transform: scale(1.02);
+    transform: scale(1.02);
   }
 }
 
@@ -46,10 +45,10 @@ h1 {
 }
 
 h2 {
-  color: #111; 
-  font-family: 'Helvetica Neue', sans-serif !important; 
-  font-weight: bold; 
-  letter-spacing: 0.25px; 
+  color: #111;
+  font-family: "Helvetica Neue", sans-serif !important;
+  font-weight: bold;
+  letter-spacing: 0.25px;
   line-height: 1;
   padding-bottom: 8px;
 }
