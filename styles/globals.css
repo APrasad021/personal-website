@@ -60,9 +60,9 @@ h3 {
 
 ul {
   list-style-type: disclosure-closed;
-  margin-left: 12px;
+  margin-left: 32px;
 }
 
 li {
-  padding-bottom: 4px;
+  padding-bottom: 6px;
 }
