@@ -21,10 +21,6 @@ a:visited {
   color: #a769a7;
 }
 
-a:hover {
-  text-decoration: line-through;
-}
-
 @media only screen and (min-width: 768px) {
   a {
     display: inline-block;
@@ -35,9 +31,21 @@ a:hover {
     -webkit-transition-property: transform;
     transition-property: transform;
   }
+}
+
+a:hover {
+  text-decoration: line-through;
+}
+
+@media only screen and (min-width: 768px) {
   a:hover {
     transform: scale(1.02);
   }
+}
+
+/* bm css practices */
+u {
+  text-decoration: none;
 }
 
 h1 {
