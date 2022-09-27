@@ -28,14 +28,14 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.events]);
 
   return (
-    <div suppressHydrationWarning>
+    <>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <NavBarWrapper>
-        {typeof window === "undefined" ? null : <Component {...pageProps} />}
+        <Component {...pageProps} />
       </NavBarWrapper>
-    </div>
+    </>
   );
 }
 
