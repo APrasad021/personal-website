@@ -4,6 +4,7 @@ import { GET_POST, GET_POSTS_SLUGS } from "../../util/queries";
 import { PostData, PostsConnectionData, SlugParam } from "../../util/types";
 
 import styles from "../../styles/blogpost.module.css";
+import ReadingBar from "../../components/ReadingBar";
 
 type Props = {
   post: PostData;
@@ -32,6 +33,7 @@ export default function PostPage(props: Props) {
         />
         <meta property="og:type" content="website" />
       </Head>
+      <ReadingBar />
       <h1 className={styles.title}>{props.post.title}</h1>
       <h3 className={styles.timestamp}>
         {new Date(props.post.createdAt).toDateString()}
