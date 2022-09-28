@@ -9,7 +9,6 @@
   text-align: right;
   padding: 16px;
   padding-right: 28px;
-  display: grid;
   width: 100%;
 }
 
@@ -36,4 +35,43 @@
 .homelink a:visited {
   /* remove animation from navbar links */
   color: black;
+}
+
+@media only screen and (min-width: 768px) {
+  .slidelink a {
+    -webkit-transition-duration: 0.75s;
+    transition-duration: 0.75s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    transition: margin-right 0.75s ease-out;
+  }
+  .slidelink a:hover {
+    margin-right: -12px;
+    transform: unset;
+    transform: scale(1.1);
+    text-decoration: none;
+    /* text-decoration-color: gray; */
+  }
+
+  /* Fade in */
+  .slidelink a::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: gray;
+    transform-origin: top right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in;
+  }
+
+  .slidelink :hover::before {
+    transform: scaleX(1);
+  }
+}
+
+@media only screen and (min-width: 768px) {
 }

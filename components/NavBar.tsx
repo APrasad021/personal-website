@@ -14,24 +14,36 @@ function NavBar() {
           <a>Ashwin Prasad</a>
         </Link>
       </div>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-      <Link href="/blog">
-        <a>Blog</a>
-      </Link>
-      <Link href="/education">
-        <a>Education</a>
-      </Link>
-      <Link href="/links">
-        <a>Links</a>
-      </Link>
-      <Link href="/people">
-        <a>People</a>
-      </Link>
-      <Link href="/space">
-        <a>Space</a>
-      </Link>
+      <div className={styles.slidelink}>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+      </div>
+      <div className={styles.slidelink}>
+        <Link href="/blog">
+          <a>Blog</a>
+        </Link>
+      </div>
+      <div className={styles.slidelink}>
+        <Link href="/education">
+          <a>Education</a>
+        </Link>
+      </div>
+      <div className={styles.slidelink}>
+        <Link href="/links">
+          <a>Links</a>
+        </Link>
+      </div>
+      <div className={styles.slidelink}>
+        <Link href="/people">
+          <a>People</a>
+        </Link>
+      </div>
+      <div className={styles.slidelink}>
+        <Link href="/space">
+          <a>Space</a>
+        </Link>
+      </div>
     </div>
   );
 }
