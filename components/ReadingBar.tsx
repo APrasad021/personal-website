@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 
 import styles from "../styles/readingbar.module.css";
 
@@ -19,7 +19,7 @@ function ReadingBar() {
     return () => window.removeEventListener("scroll", scrollHeight);
   });
 
-  const barStyle = {
+  const barStyle: CSSProperties = {
     width: `${width}%`,
     visibility: width > 2 ? "visible" : "hidden",
     opacity: width > 2 ? 0.75 : 0,
