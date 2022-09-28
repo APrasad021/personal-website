@@ -11,7 +11,6 @@ type Props = {
 };
 
 export default function PostPage(props: Props) {
-  console.log("hi");
   const createdAt = new Date(props.post.createdAt).toDateString();
   const updatedAt = new Date(props.post.updatedAt).toDateString();
   const showLastUpdatedFooter = createdAt !== updatedAt;

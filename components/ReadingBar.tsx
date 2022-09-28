@@ -21,8 +21,8 @@ function ReadingBar() {
 
   const barStyle: CSSProperties = {
     width: `${width}%`,
-    visibility: width > 2 ? "visible" : "hidden",
-    opacity: width > 2 ? 0.75 : 0,
+    visibility: width > 2 && width < 98 ? "visible" : "hidden",
+    opacity: width > 2 && width < 99 ? 0.75 : 0,
   };
 
   return <div className={styles.bar} style={barStyle} />;
