@@ -32,3 +32,23 @@ export type SlugParam = {
     slug: string;
   };
 };
+
+export type Book = {
+  id: string;
+  book_url: string;
+  avg_rating: string;
+  num_ratings: string;
+  num_pages: string;
+  rating: number;
+  review: string;
+  title: string;
+  author: string;
+  author_url: string;
+  date_read: string;
+};
+
+export type ShelfParam = {
+  params: {
+    shelf: string;
+  };
+};
