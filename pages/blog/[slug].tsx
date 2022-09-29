@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { motion } from "framer-motion";
 import client from "../../util/apollo-client";
 import { GET_POST, GET_POSTS_SLUGS } from "../../util/queries";
 import { PostData, PostsConnectionData, SlugParam } from "../../util/types";
@@ -16,35 +17,45 @@ export default function PostPage(props: Props) {
   const showLastUpdatedFooter = createdAt !== updatedAt;
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>{props.post.title}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="Hello, welcome to my blog post" />
-        <meta property="og:title" content={props.post.title} />
-        <meta
-          property="og:description"
-          content="Hello, welcome to my blog post"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      <div className={styles.container}>
+        <Head>
+          <title>{props.post.title}</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+          <meta name="description" content="Hello, welcome to my blog post" />
+          <meta property="og:title" content={props.post.title} />
+          <meta
+            property="og:description"
+            content="Hello, welcome to my blog post"
+          />
+          <meta
+            property="og:url"
+            content={`https://ashwinprasad.dev/blog/${props.post.title}`}
+          />
+          <meta property="og:type" content="website" />
+        </Head>
+        <ReadingBar />
+        <h1 className={styles.title}>{props.post.title}</h1>
+        <h3 className={styles.timestamp}>
+          {new Date(props.post.createdAt).toDateString()}
+        </h3>
+        <div
+          dangerouslySetInnerHTML={{ __html: props.post.content.html }}
+          className={styles.content}
         />
-        <meta
-          property="og:url"
-          content={`https://ashwinprasad.dev/blog/${props.post.title}`}
-        />
-        <meta property="og:type" content="website" />
-      </Head>
-      <ReadingBar />
-      <h1 className={styles.title}>{props.post.title}</h1>
-      <h3 className={styles.timestamp}>
-        {new Date(props.post.createdAt).toDateString()}
-      </h3>
-      <div
-        dangerouslySetInnerHTML={{ __html: props.post.content.html }}
-        className={styles.content}
-      />
-      {showLastUpdatedFooter && (
-        <p className={styles.lastupdated}>Last updated {updatedAt}</p>
-      )}
-    </div>
+        {showLastUpdatedFooter && (
+          <p className={styles.lastupdated}>Last updated {updatedAt}</p>
+        )}
+      </div>
+    </motion.div>
   );
 }
 

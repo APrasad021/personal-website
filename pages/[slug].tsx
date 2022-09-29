@@ -1,5 +1,6 @@
 import Head from "next/head";
 import client from "../util/apollo-client";
+import { motion } from "framer-motion";
 import { GET_PAGES, GET_PAGE_QUERY } from "../util/queries";
 import { PageData } from "../util/types";
 
@@ -25,32 +26,45 @@ export default function Page(props: Props) {
     props.page.title
   );
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>{props.page.title}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="Hello, welcome to my shared space" />
-        <meta property="og:title" content={props.page.title} />
-        <meta
-          property="og:description"
-          content="Hello, welcome to my shared space"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      <div className={styles.container}>
+        <Head>
+          <title>{props.page.title}</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+          <meta
+            name="description"
+            content="Hello, welcome to my shared space"
+          />
+          <meta property="og:title" content={props.page.title} />
+          <meta
+            property="og:description"
+            content="Hello, welcome to my shared space"
+          />
+          <meta
+            property="og:url"
+            content={`https://ashwinprasad.dev/${props.page.title}`}
+          />
+          <meta property="og:type" content="website" />
+        </Head>
+        <div
+          dangerouslySetInnerHTML={{ __html: props.page.content.html }}
+          className={styles.content}
         />
-        <meta
-          property="og:url"
-          content={`https://ashwinprasad.dev/${props.page.title}`}
-        />
-        <meta property="og:type" content="website" />
-      </Head>
-      <div
-        dangerouslySetInnerHTML={{ __html: props.page.content.html }}
-        className={styles.content}
-      />
-      {showLastUpdatedFooter && (
-        <p className={styles.lastupdated}>
-          Last updated {new Date(props.page.updatedAt).toDateString()}
-        </p>
-      )}
-    </div>
+        {showLastUpdatedFooter && (
+          <p className={styles.lastupdated}>
+            Last updated {new Date(props.page.updatedAt).toDateString()}
+          </p>
+        )}
+      </div>
+    </motion.div>
   );
 }
 
