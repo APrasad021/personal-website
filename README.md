@@ -4,6 +4,8 @@
 
 **CMS:** [Hygraph](https://hygraph.com/)
 
+**Book Data:** [Firestore](https://cloud.google.com/firestore)
+
 **Hosting and Deployment:** [Vercel](https://vercel.com/)
 
 **Analytics:** [Google Analytics](https://analytics.google.com/), [Next.js](https://nextjs.org/analytics)
@@ -17,5 +19,3 @@
 - [ ] SEO Optimize Pages
 
 - [ ] Dynamically Render NavBar Links
-
-- [ ] Add Books Section
