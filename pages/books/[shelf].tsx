@@ -22,7 +22,15 @@ type Props = {
 
 export default function Books(props: Props) {
   return (
-    <div>
+    <div className={styles.container}>
+      <p>
+        The books are scraped from{" "}
+        <a href="https://www.goodreads.com/user/show/139988530-ashwin-prasad">
+          my Goodreads profile
+        </a>
+        . The community rating and # of community ratings are shown in the
+        bottom left of each card, respectively.
+      </p>
       <div className={styles.bookselflinks}>
         <Link href="/books/currently-reading">
           <a>Currently Reading</a>
@@ -35,7 +43,7 @@ export default function Books(props: Props) {
         </Link>
       </div>
 
-      <div className={styles.container}>
+      <div className={styles.bookcontainer}>
         {props.books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}

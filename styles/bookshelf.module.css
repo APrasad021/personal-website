@@ -1,4 +1,12 @@
 .container {
+  display: block;
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+  padding-top: 2.5%;
+  float: left;
+}
+
+.bookcontainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -9,11 +17,12 @@
 .cardheading h4 {
   overflow: clip;
   text-overflow: ellipsis;
+  font-size: 18px;
 }
 
 .card {
   /* Change background color */
-  width: 20%;
+  width: 23%;
   background-color: white;
 
   opacity: 50%;
@@ -45,20 +54,29 @@
   }
 }
 
+.author {
+  font-size: 16px;
+}
+
 .cardheading {
   padding-bottom: 8px;
 }
 
 .cardbody {
-  padding-bottom: 16px;
+  padding-top: 16px;
+}
+
+.cardbody p {
+  font-size: 12px;
 }
 
 .bookselflinks {
+  padding-top: 16px;
   text-align: center;
 }
 
 .bookselflinks a {
-  padding: 0 8px;
+  padding: 16px 8px;
 }
 
 .timestamp {
@@ -82,12 +100,19 @@
   height: 32px;
 }
 
-.rating {
+.communityrating {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  font-size: 14px;
+}
+
+.myrating {
   position: absolute;
   bottom: 4px;
   right: 4px;
 }
 
-.rating span {
+.myrating span {
   padding: 0 0.5px !important;
 }

@@ -63,6 +63,7 @@ function Book({ book }: Props) {
     <div
       className={styles.card}
       style={hoverShadow}
+      onMouseOver={() => setIsHover(true)}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -78,7 +79,7 @@ function Book({ book }: Props) {
         >
           <div className={styles.cardheading}>
             <h4 className={styles.booktitle}>{trimmedTitle}</h4>
-            <p>{book.author}</p>
+            <p className={styles.author}>{book.author}</p>
           </div>
           {book.shelf === "read" && (
             <div className={styles.cardbody}>
@@ -87,11 +88,14 @@ function Book({ book }: Props) {
               )}
             </div>
           )}
-          {valueIsDefined(book.rating, "None") && (
-            <div className={styles.ratingcontainer}>
-              <div className={styles.rating}>{getStars()}</div>
+          <div className={styles.ratingcontainer}>
+            <div className={styles.communityrating}>
+              {book.avg_rating} ({book.num_ratings})
             </div>
-          )}
+            {valueIsDefined(book.rating, "None") && (
+              <div className={styles.myrating}>{getStars()}</div>
+            )}
+          </div>
         </a>
       </Link>
     </div>
