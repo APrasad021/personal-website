@@ -14,22 +14,40 @@ import Link from "next/link";
 import BookCard from "../../components/Book";
 
 import styles from "../../styles/bookshelf.module.css";
+import Head from "next/head";
 
 type Props = {
   books: Book[];
   lastUpdated: string;
+  shelf: string;
 };
 
 export default function Books(props: Props) {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Books</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="Hello, welcome to my blog post" />
+        <meta property="og:title" content="Books" />
+        <meta
+          property="og:description"
+          content="Hello, welcome to my bookshelves"
+        />
+        <meta
+          property="og:url"
+          content={`https://ashwinprasad.dev/book/${props.shelf}`}
+        />
+        <meta property="og:type" content="website" />
+      </Head>
       <p>
         The books are scraped from{" "}
         <a href="https://www.goodreads.com/user/show/139988530-ashwin-prasad">
           my Goodreads profile
         </a>
         . The community rating and # of community ratings are shown in the
-        bottom left of each card, respectively.
+        bottom left of each card, respectively. My personal rating (out of 5) is
+        shown in the bottom right of most of the books that I&apos;ve read.
       </p>
       <div className={styles.bookselflinks}>
         <Link href="/books/currently-reading">
@@ -77,6 +95,7 @@ export async function getStaticProps({ params }: ShelfParam) {
     props: {
       books: bookData,
       lastUpdated: lastUpdatedData[0].last_updated.toDate().toDateString(),
+      shelf: params.shelf,
     },
   };
 }
