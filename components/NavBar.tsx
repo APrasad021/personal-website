@@ -25,6 +25,11 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.slidelink}>
+        <Link href="/books">
+          <a>Books</a>
+        </Link>
+      </div>
+      <div className={styles.slidelink}>
         <Link href="/education">
           <a>Education</a>
         </Link>

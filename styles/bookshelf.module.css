@@ -1,20 +1,19 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: normal;
+  justify-content: center;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 .cardheading h4 {
-  height: 40px;
   overflow: clip;
   text-overflow: ellipsis;
 }
 
 .card {
   /* Change background color */
-  width: 256px;
+  width: 20%;
   background-color: white;
 
   opacity: 50%;
@@ -23,9 +22,27 @@
   border: 1px solid #bacdd8;
 
   /* Add space between the border and the content */
-  padding: 8px;
+  padding: 16px;
 
   border-radius: 12px;
+  margin: 12px;
+  transition: filter 0.3s ease-in-out, transform 0.25s linear;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .card {
+    width: 45%;
+  }
 }
 
 .cardheading {
@@ -33,5 +50,44 @@
 }
 
 .cardbody {
-  padding-bottom: 8px;
+  padding-bottom: 16px;
+}
+
+.bookselflinks {
+  text-align: center;
+}
+
+.bookselflinks a {
+  padding: 0 8px;
+}
+
+.timestamp {
+  margin: 0px;
+  min-width: 0px;
+  font-size: 14px;
+  font-weight: lighter;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  color: gray;
+  float: right;
+  padding-right: 2%;
+}
+
+.ratingcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 32px;
+}
+
+.rating {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}
+
+.rating span {
+  padding: 0 0.5px !important;
 }

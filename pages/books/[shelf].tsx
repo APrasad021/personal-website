@@ -1,4 +1,11 @@
-import { collection, getDocs, where, query } from "firebase/firestore/lite";
+import {
+  collection,
+  getDocs,
+  where,
+  query,
+  QueryDocumentSnapshot,
+  DocumentData,
+} from "firebase/firestore/lite";
 import db from "../../util/firebase";
 import { ShelfParam, Book } from "../../util/types";
 
@@ -16,17 +23,24 @@ type Props = {
 export default function Books(props: Props) {
   return (
     <div>
-      <h1>Books</h1>
-      <Link href="/books/currently-reading">Currently Reading</Link>
-      <Link href="/books/read">Read</Link>
-      <Link href="/books/to-read">Reading List</Link>
+      <div className={styles.bookselflinks}>
+        <Link href="/books/currently-reading">
+          <a>Currently Reading</a>
+        </Link>
+        <Link href="/books/read">
+          <a>Read</a>
+        </Link>
+        <Link href="/books/to-read">
+          <a>Reading List</a>
+        </Link>
+      </div>
+
       <div className={styles.container}>
         {props.books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </div>
-
-      <p>{props.lastUpdated}</p>
+      <p className={styles.timestamp}>Last updated: {props.lastUpdated}</p>
     </div>
   );
 }
@@ -44,8 +58,12 @@ export async function getStaticProps({ params }: ShelfParam) {
   const booksSnapshot = await getDocs(booksCol);
   const lastUpdatedSnapshot = await getDocs(lastUpdatedCol);
 
-  const lastUpdatedData = lastUpdatedSnapshot.docs.map((doc) => doc.data());
-  const bookData = booksSnapshot.docs.map((doc) => doc.data());
+  const lastUpdatedData = lastUpdatedSnapshot.docs.map(
+    (doc: QueryDocumentSnapshot<DocumentData>) => doc.data()
+  );
+  const bookData = booksSnapshot.docs.map(
+    (doc: QueryDocumentSnapshot<DocumentData>) => doc.data()
+  );
 
   return {
     props: {

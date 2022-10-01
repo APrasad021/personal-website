@@ -45,6 +45,7 @@ export type Book = {
   author: string;
   author_url: string;
   date_read: string;
+  shelf: string;
 };
 
 export type ShelfParam = {
