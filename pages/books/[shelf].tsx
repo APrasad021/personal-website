@@ -23,6 +23,16 @@ type Props = {
 };
 
 export default function Books(props: Props) {
+  const getLexicon = () => {
+    let lexicon =
+      "The community rating and # of community ratings are shown in the bottom of each card, respectively.";
+    if (props.shelf === "read")
+      lexicon =
+        lexicon +
+        " My personal rating (out of 5 stars) is shown in the bottom right of most of the books that I've read.";
+    return lexicon;
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -40,11 +50,7 @@ export default function Books(props: Props) {
         />
         <meta property="og:type" content="website" />
       </Head>
-      <p className={styles.lexicon}>
-        The community rating and # of community ratings are shown in the bottom
-        of each card, respectively. My personal rating (out of 5) is shown in
-        the bottom right of most of the books that I&apos;ve read.
-      </p>
+      <p className={styles.lexicon}>{getLexicon()}</p>
       <div className={styles.bookselflinks}>
         <Link href="/books/currently-reading">
           <a>Currently Reading</a>

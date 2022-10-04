@@ -16,15 +16,6 @@ function Book({ book }: Props) {
 
   const trimmedTitle = book.title.split(":")[0];
 
-  const getShadow = () => {
-    return isHover ? "0 8px 12px teal" : "0 1px 3px rgba(0,0,0,0.12)";
-  };
-
-  const hoverShadow: CSSProperties = {
-    boxShadow: getShadow(),
-    cursor: isHover ? "pointer" : "default",
-  };
-
   const getStars = () => {
     const stars = [];
     for (let i = 0; i < book.rating; i++) {
@@ -52,7 +43,6 @@ function Book({ book }: Props) {
   return (
     <div
       className={styles.card}
-      style={hoverShadow}
       onMouseOver={() => setIsHover(true)}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
