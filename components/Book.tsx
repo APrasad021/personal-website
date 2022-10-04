@@ -22,7 +22,7 @@ function Book({ book }: Props) {
 
   const hoverShadow: CSSProperties = {
     boxShadow: getShadow(),
-    cursor: isHover ? "pointer" : "default",
+    cursor: isHover ? "grab" : "default",
   };
 
   const getStars = () => {
