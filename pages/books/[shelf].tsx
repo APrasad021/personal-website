@@ -40,14 +40,10 @@ export default function Books(props: Props) {
         />
         <meta property="og:type" content="website" />
       </Head>
-      <p>
-        The books are scraped from{" "}
-        <a href="https://www.goodreads.com/user/show/139988530-ashwin-prasad">
-          my Goodreads profile
-        </a>
-        . The community rating and # of community ratings are shown in the
-        bottom left of each card, respectively. My personal rating (out of 5) is
-        shown in the bottom right of most of the books that I&apos;ve read.
+      <p className={styles.lexicon}>
+        The community rating and # of community ratings are shown in the bottom
+        of each card, respectively. My personal rating (out of 5) is shown in
+        the bottom right of most of the books that I&apos;ve read.
       </p>
       <div className={styles.bookselflinks}>
         <Link href="/books/currently-reading">

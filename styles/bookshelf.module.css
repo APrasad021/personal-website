@@ -3,7 +3,10 @@
   padding-left: 7.5%;
   padding-right: 7.5%;
   padding-top: 2.5%;
-  float: left;
+}
+
+.lexicon {
+  text-align: center;
 }
 
 .bookcontainer {
@@ -35,11 +38,11 @@
 
   border-radius: 12px;
   margin: 12px;
-  transition: filter 0.3s ease-in-out, transform 0.25s linear;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 600px) {
@@ -59,11 +62,11 @@
 }
 
 .cardheading {
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 
 .cardbody {
-  padding-top: 16px;
+  padding-top: 12px;
 }
 
 .cardbody p {
@@ -92,27 +95,27 @@
 }
 
 .ratingcontainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem 0;
   height: 32px;
-}
-
-.communityrating {
-  position: absolute;
-  bottom: 4px;
-  left: 4px;
-  font-size: 14px;
-}
-
-.myrating {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .myrating span {
   padding: 0 0.5px !important;
+}
+
+.imagecontainer {
+  width: 50px;
+  height: max-content;
+}
+
+.bodycontainer {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }

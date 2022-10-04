@@ -16,22 +16,12 @@ function Book({ book }: Props) {
 
   const trimmedTitle = book.title.split(":")[0];
 
-  const getFilter = () => {
-    if (book.rating === 0) {
-      let shadowColor = "gray";
-      if (book.shelf === "currently-reading") shadowColor = "blue";
-      if (book.shelf === "to-read") shadowColor = "green";
-      return isHover ? `drop-shadow(0 0 .3rem ${shadowColor})` : "none";
-    }
-    return isHover
-      ? `drop-shadow(0 0 ${
-          0.05 * book.rating + (book.rating > 3 ? book.rating * 0.1 : 0)
-        }rem teal)`
-      : "none";
+  const getShadow = () => {
+    return isHover ? "0 8px 12px teal" : "0 1px 3px rgba(0,0,0,0.12)";
   };
 
   const hoverShadow: CSSProperties = {
-    filter: getFilter(),
+    boxShadow: getShadow(),
     cursor: isHover ? "pointer" : "default",
   };
 
@@ -73,21 +63,31 @@ function Book({ book }: Props) {
             all: "unset",
             width: "100%",
             height: "100%",
-            position: "relative",
-            display: "inline-block",
           }}
         >
-          <div className={styles.cardheading}>
-            <h4 className={styles.booktitle}>{trimmedTitle}</h4>
-            <p className={styles.author}>{book.author}</p>
-          </div>
-          {book.shelf === "read" && (
-            <div className={styles.cardbody}>
-              {valueIsDefined(book.date_read, "not set") && (
-                <p>Completed on {book.date_read}</p>
+          <div className={styles.bodycontainer}>
+            <div className={styles.imagecontainer}>
+              <Image
+                src={book.cover_image_url}
+                width={49}
+                height={75}
+                alt="Book Cover"
+              />
+            </div>
+            <div>
+              <div className={styles.cardheading}>
+                <h4 className={styles.booktitle}>{trimmedTitle}</h4>
+                <p className={styles.author}>{book.author}</p>
+              </div>
+              {book.shelf === "read" && (
+                <div className={styles.cardbody}>
+                  {valueIsDefined(book.date_read, "not set") && (
+                    <p>Completed on {book.date_read}</p>
+                  )}
+                </div>
               )}
             </div>
-          )}
+          </div>
           <div className={styles.ratingcontainer}>
             <div className={styles.communityrating}>
               {book.avg_rating} ({book.num_ratings})
