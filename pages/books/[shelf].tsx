@@ -99,6 +99,7 @@ export async function getStaticProps({ params }: ShelfParam) {
       lastUpdated: lastUpdatedData[0].last_updated.toDate().toDateString(),
       shelf: params.shelf,
     },
+    revalidate: 60,
   };
 }
 
