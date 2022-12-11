@@ -14,7 +14,12 @@ function Book({ book }: Props) {
     return value !== notDefinedValue;
   };
 
-  const trimmedTitle = book.title.split(":")[0];
+  const trimmedTitle = book.title
+    .split(":")[0]
+    .split("(")[0]
+    .split("[")[0]
+    .trim()
+    .replace(/[^\x00-\x7F]/g, "");
 
   const getShadow = () => {
     return isHover ? "0 8px 12px teal" : "0 1px 3px rgba(0,0,0,0.12)";
