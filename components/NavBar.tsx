@@ -25,7 +25,7 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.slidelink}>
-        <Link href="/books">
+        <Link href="/books/currently-reading">
           <a>Books</a>
         </Link>
       </div>
