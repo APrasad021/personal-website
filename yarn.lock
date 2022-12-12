@@ -668,6 +668,11 @@
     "@typescript-eslint/types" "5.27.1"
     "eslint-visitor-keys" "^3.3.0"
 
+"@vercel/analytics@^0.1.6":
+  "integrity" "sha512-zNd5pj3iDvq8IMBQHa1YRcIteiw6ZiPB8AsONHd8ieFXlNpLqhXfIYnf4WvTfZ7S1NSJ++mIM14aJnNac/VMXQ=="
+  "resolved" "https://registry.npmjs.org/@vercel/analytics/-/analytics-0.1.6.tgz"
+  "version" "0.1.6"
+
 "@wry/context@^0.6.0":
   "integrity" "sha512-LOmVnY1iTU2D8tv4Xf6MVMZZ+juIJ87Kt/plMijjN20NMAXGmH4u8bS1t0uT74cZ5gwpocYueV58YwyI8y+GKw=="
   "resolved" "https://registry.npmjs.org/@wry/context/-/context-0.6.1.tgz"
@@ -2149,7 +2154,7 @@
     "@types/lodash" "^4.14.105"
     "@types/react" "^16.0.40"
 
-"react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.3.0", "react@18.2.0":
+"react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8||^17||^18", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.3.0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

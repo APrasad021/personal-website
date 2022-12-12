@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { Analytics } from "@vercel/analytics/react";
 
 import NavBarWrapper from "../components/NavBar";
 import * as ga from "../util/ga";
@@ -34,6 +35,7 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <NavBarWrapper>
         <Component {...pageProps} />
+        <Analytics />
       </NavBarWrapper>
     </>
   );
