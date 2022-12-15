@@ -9,6 +9,34 @@
   text-align: center;
 }
 
+.readheading {
+  text-align: left;
+}
+
+.starsmeaning {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  text-align: center;
+  /* anti patterns */
+  margin-left: -7.5%;
+  margin-right: -7.5%;
+}
+
+.meaningitem {
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media screen and (max-width: 900px) {
+  .card {
+    padding-left: 4%;
+  }
+}
+
 .bookcontainer {
   display: flex;
   flex-wrap: wrap;
@@ -25,7 +53,7 @@
 
 .card {
   /* Change background color */
-  width: 23%;
+  width: 30%;
   background-color: white;
 
   opacity: 50%;
@@ -111,6 +139,12 @@
   width: 50px;
   height: max-content;
 }
+
+/* .imagecontainer img {
+  width: 100%;
+  height: 75px;
+  object-fit: cover;
+} */
 
 .bodycontainer {
   position: relative;

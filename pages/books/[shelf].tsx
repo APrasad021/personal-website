@@ -9,7 +9,7 @@ import {
 import db from "../../util/firebase";
 import { ShelfParam, Book } from "../../util/types";
 
-import { shelves } from "../../util/bookshelves";
+import { getStars, shelves } from "../../util/bookshelves";
 import Link from "next/link";
 import BookCard from "../../components/Book";
 
@@ -23,13 +23,40 @@ type Props = {
 };
 
 export default function Books(props: Props) {
-  const getLexicon = () => {
+  const isReadShelf = props.shelf === "read";
+  const getHeadingSection = () => {
     let lexicon =
       "The community rating and # of community ratings are shown in the bottom of each card, respectively.";
-    if (props.shelf === "read")
-      lexicon =
+    if (isReadShelf) {
+      const lexiconHeader =
         lexicon +
-        " My personal rating (out of 5 stars) is shown in the bottom right of most of the books that I've read.";
+        ` My personal rating (out of 5 stars) is shown in the bottom right of most of the books that I've read. How I rate books:`;
+      const lexiconFooter =
+        "Anything 3 stars and above is a book that I recommend giving a read.";
+      const starMeanings = [
+        "a must read",
+        "a great read",
+        "a good read",
+        "an okay read",
+        "a tough read",
+      ];
+      return (
+        <div>
+          <p>{lexiconHeader}</p>
+          <div className={styles.starsmeaning}>
+            {starMeanings.map((meaning, index) => {
+              return (
+                <div className={styles.meaningitem} key={index}>
+                  <div>{getStars(index + 1, false, 12)}</div>
+                  <p>{meaning}</p>
+                </div>
+              );
+            })}
+          </div>
+          <p>{lexiconFooter}</p>
+        </div>
+      );
+    }
     return lexicon;
   };
 
@@ -50,7 +77,9 @@ export default function Books(props: Props) {
         />
         <meta property="og:type" content="website" />
       </Head>
-      <p className={styles.lexicon}>{getLexicon()}</p>
+      <div className={isReadShelf ? styles.readheading : styles.lexicon}>
+        {getHeadingSection()}
+      </div>
       <div className={styles.bookselflinks}>
         <Link href="/books/currently-reading">
           <a>Currently Reading</a>
