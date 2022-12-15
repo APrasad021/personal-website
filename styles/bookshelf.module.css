@@ -16,13 +16,13 @@
 .starsmeaning {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  gap: 4rem;
+  padding-top: 24px;
+  padding-bottom: 24px;
   text-align: center;
   /* anti patterns */
-  margin-left: -7.5%;
-  margin-right: -7.5%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .meaningitem {
@@ -34,6 +34,12 @@
 @media screen and (max-width: 900px) {
   .card {
     padding-left: 4%;
+  }
+
+  .starsmeaning {
+    margin-left: -7.5%;
+    margin-right: -7.5%;
+    gap: 0.75rem;
   }
 }
 
