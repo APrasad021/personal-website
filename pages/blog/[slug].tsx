@@ -57,6 +57,7 @@ export async function getStaticProps({ params }: SlugParam) {
     props: {
       post: data.post,
     },
+    revalidate: 60,
   };
 }
 

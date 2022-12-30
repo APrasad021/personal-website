@@ -64,6 +64,7 @@ export async function getStaticProps({ params }: SlugParam) {
     props: {
       page: data.page,
     },
+    revalidate: 60,
   };
 }
 

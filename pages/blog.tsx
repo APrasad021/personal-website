@@ -43,5 +43,6 @@ export async function getStaticProps() {
     props: {
       posts: data.postsConnection.edges,
     },
+    revalidate: 60,
   };
 }
