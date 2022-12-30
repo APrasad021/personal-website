@@ -112,6 +112,12 @@
   text-align: center;
 }
 
+@media screen and (max-width: 768px) {
+  .bookselflinks {
+    padding-bottom: 8px;
+  }
+}
+
 .bookselflinks a {
   padding: 16px 8px;
 }
