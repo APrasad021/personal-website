@@ -24,12 +24,14 @@ function Book({ book }: Props) {
     .replace(/[^\x00-\x7F]/g, "");
 
   const getShadow = () => {
-    return isHover ? "0 8px 12px teal" : "0 1px 3px rgba(0,0,0,0.12)";
+    return isHover
+      ? "0 8px 12px rgba(132, 115, 177, 1)"
+      : "0 1px 3px rgba(0,0,0,0.12)";
   };
 
   const hoverShadow: CSSProperties = {
     boxShadow: getShadow(),
-    cursor: isHover ? "grab" : "default",
+    cursor: isHover ? "pointer" : "default",
   };
 
   const onCardClick = () => {

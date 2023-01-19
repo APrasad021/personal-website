@@ -34,11 +34,11 @@ export default function Books(props: Props) {
       const lexiconFooter =
         "Anything 3 stars and above is a book that I recommend giving a read.";
       const starMeanings = [
-        "a must read",
-        "a great read",
-        "a good read",
-        "an okay read",
         "a tough read",
+        "an okay read",
+        "a good read",
+        "a great read",
+        "a must read",
       ];
       return (
         <div>
@@ -122,9 +122,29 @@ export async function getStaticProps({ params }: ShelfParam) {
     (doc: QueryDocumentSnapshot<DocumentData>) => doc.data()
   );
 
+  // remove d
+
   return {
     props: {
-      books: bookData,
+      // only return the data that we need for books
+      // which is defined by the Book type
+      books: bookData.map((book) => {
+        return {
+          id: book.id,
+          book_url: book.book_url,
+          avg_rating: book.avg_rating,
+          num_ratings: book.num_ratings,
+          num_pages: book.num_pages,
+          rating: book.rating,
+          review: book.review,
+          title: book.title,
+          author: book.author,
+          author_url: book.author_url,
+          date_read: book.date_read,
+          shelf: book.shelf,
+          cover_image_url: book.cover_image_url,
+        };
+      }),
       lastUpdated: lastUpdatedData[0].last_updated.toDate().toDateString(),
       shelf: params.shelf,
     },
