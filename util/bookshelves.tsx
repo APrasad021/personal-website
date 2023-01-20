@@ -20,7 +20,7 @@ export const getStars = (
           isHover
             ? {
                 filter:
-                  "invert(33%) sepia(35%) saturate(3204%) hue-rotate(153deg) brightness(91%) contrast(100%)",
+                  "invert(52%) sepia(12%) saturate(1472%) hue-rotate(215deg) brightness(90%) contrast(85%)",
               }
             : {}
         }

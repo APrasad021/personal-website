@@ -4,6 +4,7 @@ import { CSSProperties, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { getStars } from "../util/bookshelves";
+import { isMobile } from "react-device-detect";
 
 type Props = {
   book: Book;
@@ -42,9 +43,9 @@ function Book({ book }: Props) {
     <div
       className={styles.card}
       style={hoverShadow}
-      onMouseOver={() => setIsHover(true)}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+      onMouseOver={!isMobile ? () => setIsHover(true) : undefined}
+      onMouseEnter={!isMobile ? () => setIsHover(true) : undefined}
+      onMouseLeave={!isMobile ? () => setIsHover(false) : undefined}
       onClick={onCardClick}
     >
       <div className={styles.bodycontainer}>
@@ -72,11 +73,12 @@ function Book({ book }: Props) {
       </div>
       <div className={styles.ratingcontainer}>
         <div className={styles.communityrating}>
-          {book.avg_rating} ({book.num_ratings})
+          {book.avg_rating} (
+          {book.num_ratings.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")})
         </div>
         {valueIsDefined(book.rating, "None") && (
           <div className={styles.myrating}>
-            {getStars(book.rating, isHover)}
+            {getStars(book.rating, !isMobile ? isHover : false)}
           </div>
         )}
       </div>
