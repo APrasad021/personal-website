@@ -15,6 +15,7 @@ import BookCard from "../../components/Book";
 
 import styles from "../../styles/bookshelf.module.css";
 import Head from "next/head";
+import moment from "moment";
 
 type Props = {
   books: Book[];
@@ -122,8 +123,6 @@ export async function getStaticProps({ params }: ShelfParam) {
     (doc: QueryDocumentSnapshot<DocumentData>) => doc.data()
   );
 
-  // remove d
-
   return {
     props: {
       // only return the data that we need for books
@@ -145,7 +144,9 @@ export async function getStaticProps({ params }: ShelfParam) {
           cover_image_url: book.cover_image_url,
         };
       }),
-      lastUpdated: lastUpdatedData[0].last_updated.toDate().toDateString(),
+      lastUpdated: moment(
+        new Date(lastUpdatedData[0].last_updated.seconds * 1000)
+      ).fromNow(),
       shelf: params.shelf,
     },
     revalidate: 60,

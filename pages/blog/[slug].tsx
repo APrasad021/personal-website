@@ -42,7 +42,7 @@ export default function PostPage(props: Props) {
         className={styles.content}
       />
       {showLastUpdatedFooter && (
-        <p className={styles.lastupdated}>Last updated {updatedAt}</p>
+        <p className={styles.lastupdated}>Last updated: {updatedAt}</p>
       )}
     </div>
   );

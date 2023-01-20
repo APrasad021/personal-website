@@ -4,6 +4,7 @@ import { GET_PAGES, GET_PAGE_QUERY } from "../util/queries";
 import { PageData } from "../util/types";
 
 import styles from "../styles/page.module.css";
+import moment from "moment";
 
 type Props = {
   page: PageData;
@@ -47,7 +48,7 @@ export default function Page(props: Props) {
       />
       {showLastUpdatedFooter && (
         <p className={styles.lastupdated}>
-          Last updated {new Date(props.page.updatedAt).toDateString()}
+          Last updated: {moment(new Date(props.page.updatedAt)).fromNow()}
         </p>
       )}
     </div>
