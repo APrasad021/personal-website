@@ -2,10 +2,25 @@ import client from "../util/apollo-client";
 import { GET_PAGE_QUERY } from "../util/queries";
 import Link from "next/link";
 import Head from "next/head";
+import notion from "../util/notion";
 
 import styles from "../styles/links.module.css";
 
-export default function Links() {
+type Link = {
+  id: string;
+  title: string;
+  url: string;
+  tags: string[];
+};
+
+type Props = {
+  tags: string[];
+  links: Link[];
+};
+
+export default function Links({ tags, databaseData }) {
+  console.log(tags, databaseData);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -23,4 +38,28 @@ export default function Links() {
       <Link href="https://www.linkedin.com/in/aprasad021/">LINKEDIN</Link>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const databaseData = await notion.databases.retrieve({
+    database_id: process.env.NOTION_DATABASE_ID,
+  });
+  const tags = databaseData.properties.Tags.multi_select.options.map(
+    (tag) => tag.name
+  );
+  console.log(tags);
+  const response = await notion.search({
+    query: "Links",
+    filter: {
+      value: "database",
+      property: "object",
+    },
+  });
+
+  return {
+    props: {
+      tags,
+      databaseData,
+    },
+  };
 }
