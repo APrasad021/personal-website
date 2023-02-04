@@ -5,8 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { tags } = JSON.parse(req.body);
-
+  const { tags, cursor } = JSON.parse(req.body);
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
     filter: getLinksFilter(tags),
@@ -16,7 +15,8 @@ export default async function handler(
         direction: "descending",
       },
     ],
+    start_cursor: cursor,
   });
 
-  res.status(200).json(response.results);
+  res.status(200).json(response);
 }
