@@ -1,4 +1,3 @@
-import client from "../util/apollo-client";
 import Head from "next/head";
 import notion, { getLinksFilter } from "../util/notion";
 
@@ -9,7 +8,6 @@ import { LineWave } from "react-loader-spinner";
 import TagButton from "../components/TagButton";
 import LinkItem from "../components/LinkItem";
 import { Link as LinkType } from "../util/types";
-import Link from "next/link";
 
 type Props = {
   tags: string[];
@@ -84,7 +82,7 @@ export default function Links({ tags, initialLinks, initialCursor }: Props) {
 
       <div>
         <div className={styles["lexicon"]}>
-          <p>My bookmarks</p>
+          <p>My online bookmarks</p>
         </div>
         <div className={styles["tags-container"]}>
           {tags.map((tag) => (
@@ -156,9 +154,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      tags,
+      tags: tags.sort(),
       initialLinks: linkData.results,
       initialCursor: linkData.next_cursor,
     },
+    revalidate: 60,
   };
 }
