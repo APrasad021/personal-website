@@ -8,6 +8,8 @@ Source code for my personal website
 
 **Book Data:** [Firestore](https://cloud.google.com/firestore)
 
+**Links/Bookmark Data:** [Notion](https://www.notion.so/)
+
 **Hosting and Deployment:** [Vercel](https://vercel.com/)
 
 **Analytics:** [Google Analytics](https://analytics.google.com/), [Next.js](https://nextjs.org/analytics)

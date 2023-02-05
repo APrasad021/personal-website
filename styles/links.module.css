@@ -1,9 +1,5 @@
 .container {
   text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .container a {
@@ -14,4 +10,85 @@
 
 .container a:hover {
   text-decoration: line-through;
+}
+
+.links-container {
+  margin: 16px 32px;
+}
+
+.tags-container {
+  margin: 16px 32px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.tag-inactive button {
+  padding: 0.25rem 0.5rem;
+  margin: 0.1rem 0.25rem;
+  border: 1px solid rgb(63, 57, 57);
+  background-color: rgb(236, 232, 232);
+  color: rgb(63, 57, 57);
+  border-radius: 0.25rem;
+  transition: 0.4s all ease-in-out;
+}
+
+.tag-inactive button:hover {
+  background-color: rgb(131, 123, 123);
+  color: rgb(243, 236, 236);
+}
+
+.tag-active button {
+  padding: 0.25rem 0.5rem;
+  margin: 0.1rem 0.25rem;
+  border: 1px solid rgb(63, 57, 57);
+  border-radius: 0.25rem;
+  background-color: rgb(63, 57, 57);
+  color: rgb(236, 232, 232);
+  transition: 0.4s all ease-in-out;
+}
+
+.tag-active button:hover {
+  background-color: rgb(193, 189, 189);
+  color: rgb(33, 32, 32);
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0px;
+}
+
+.link-item-title {
+  margin-right: auto;
+  text-align: left;
+}
+
+.link-item-tags {
+  margin-left: auto;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .link-item-title {
+    font-size: 12px;
+  }
+
+  .tag button {
+    font-size: 10px;
+  }
+
+  .tags-container {
+    margin: 8px 16px;
+  }
+}
+
+.lexicon p {
+  margin: 16px 0px 8px 0px;
+}
+
+.lexicon a {
+  display: inline;
 }

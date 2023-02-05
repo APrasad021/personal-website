@@ -25,6 +25,7 @@ type Props = {
 
 export default function Books(props: Props) {
   const isReadShelf = props.shelf === "read";
+  const isCurrentlyReadingShelf = props.shelf === "currently-reading";
   const getHeadingSection = () => {
     let lexicon =
       "The community rating and # of community ratings are shown in the bottom of each card, respectively.";
@@ -43,6 +44,7 @@ export default function Books(props: Props) {
       ];
       return (
         <div>
+          <p>Books that I read</p>
           <p>{lexiconHeader}</p>
           <div className={styles.starsmeaning}>
             {starMeanings.map((meaning, index) => {
@@ -58,7 +60,16 @@ export default function Books(props: Props) {
         </div>
       );
     }
-    return lexicon;
+    return (
+      <div>
+        <p>
+          {isCurrentlyReadingShelf
+            ? "Books that I'm currently reading"
+            : "Books that I want to read"}
+        </p>
+        <p>{lexicon}</p>
+      </div>
+    );
   };
 
   return (

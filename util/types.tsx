@@ -54,3 +54,11 @@ export type ShelfParam = {
     shelf: string;
   };
 };
+
+export type Link = {
+  properties: any;
+  id: string;
+  title: string;
+  url: string;
+  tags: string[];
+};
