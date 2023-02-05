@@ -1,32 +1,30 @@
 import client from "../util/apollo-client";
-import { GET_PAGE_QUERY } from "../util/queries";
-import Link from "next/link";
 import Head from "next/head";
 import notion, { getLinksFilter } from "../util/notion";
 
 import styles from "../styles/links.module.css";
 import { useEffect, useState } from "react";
 import { Waypoint } from "react-waypoint";
-
-type Link = {
-  id: string;
-  title: string;
-  url: string;
-  tags: string[];
-};
+import { LineWave } from "react-loader-spinner";
+import TagButton from "../components/TagButton";
+import LinkItem from "../components/LinkItem";
+import { Link as LinkType } from "../util/types";
+import Link from "next/link";
 
 type Props = {
   tags: string[];
-  initialLinks: Link[];
+  initialLinks: LinkType[];
   initialCursor: string;
 };
 
 export default function Links({ tags, initialLinks, initialCursor }: Props) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [linkData, setLinkData] = useState<Link[]>(initialLinks || []);
-  const [cursor, setCursor] = useState<string>(initialCursor || undefined);
+  const [linkData, setLinkData] = useState<LinkType[]>(initialLinks || []);
+  const [cursor, setCursor] = useState<string | undefined>(
+    undefined || initialCursor
+  );
   const [loading, setLoading] = useState<boolean>(false);
-  const [tagsChanged, setTagsChanged] = useState<string[]>(false);
+  const [tagsChanged, setTagsChanged] = useState<boolean>(false);
   const [waypointEntered, setWaypointEntered] = useState<boolean>(false);
 
   useEffect(() => {
@@ -38,11 +36,10 @@ export default function Links({ tags, initialLinks, initialCursor }: Props) {
       } else {
         fetch("api/links", {
           method: "POST",
-          body: JSON.stringify({ tags: selectedTags }),
+          body: JSON.stringify({ tags: selectedTags, cursor: cursor }),
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (tagsChanged) {
               setLinkData(data.results);
               setCursor(data.next_cursor);
@@ -57,26 +54,20 @@ export default function Links({ tags, initialLinks, initialCursor }: Props) {
     setLoading(true);
     fetchFilteredLinks();
     setLoading(false);
-  }, [
-    initialCursor,
-    initialLinks,
-    linkData,
-    selectedTags,
-    tagsChanged,
-    waypointEntered,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tagsChanged, waypointEntered, selectedTags]);
 
   const handleTagClick = (tag: string) => {
-    if (selectedTags.includes(tag.name)) {
-      setSelectedTags(selectedTags.filter((t) => t !== tag.name));
+    if (selectedTags.includes(tag)) {
+      setSelectedTags(selectedTags.filter((t) => t !== tag));
     } else {
-      setSelectedTags([...selectedTags, tag.name]);
+      setSelectedTags([...selectedTags, tag]);
     }
     setTagsChanged(true);
   };
 
   const handleWaypointEnter = () => {
-    setWaypointEntered(true);
+    if (cursor) setWaypointEntered(true);
   };
 
   return (
@@ -90,42 +81,69 @@ export default function Links({ tags, initialLinks, initialCursor }: Props) {
         <meta property="og:url" content="https://ashwinprasad.dev/links" />
         <meta property="og:type" content="website" />
       </Head>
+
       <div>
-        {tags.map((tag) => (
-          <button onClick={() => handleTagClick(tag)} key={tag.id}>
-            {tag.name}
-          </button>
-        ))}
-      </div>
-      <div>
-        {linkData.map((link) => (
-          <Link href={link.properties.URL.url} key={link.id}>
-            <a>{link.properties.Name.title[0].plain_text}</a>
-          </Link>
-        ))}
-      </div>
-      {cursor && (
-        <div>
-          <Waypoint onEnter={() => handleWaypointEnter()}>
-            <div>{loading && <p>Loading...</p>}</div>
-          </Waypoint>
+        <div className={styles["lexicon"]}>
+          <p>My bookmarks</p>
         </div>
-      )}
+        <div className={styles["tags-container"]}>
+          {tags.map((tag) => (
+            <TagButton
+              tag={tag}
+              onClick={handleTagClick}
+              key={tag}
+              selectedTags={selectedTags}
+            />
+          ))}
+        </div>
+        <div className={styles["links-container"]}>
+          {linkData.map((link) => (
+            <LinkItem
+              link={link}
+              key={link.id}
+              onTagClick={handleTagClick}
+              selectedTags={selectedTags}
+            />
+          ))}
+        </div>
+        {cursor && (
+          <Waypoint onEnter={() => handleWaypointEnter()}>
+            <LineWave
+              height="100"
+              width="100"
+              color="#4fa94d"
+              ariaLabel="line-wave"
+              visible={waypointEntered && loading}
+              wrapperStyle={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "-20px",
+              }}
+              firstLineColor="#a769a7"
+              middleLineColor="#2b6cc2"
+              lastLineColor="#a769a7"
+            />
+          </Waypoint>
+        )}
+      </div>
     </div>
   );
 }
 
 export async function getStaticProps() {
   const databaseData = await notion.databases.retrieve({
+    // @ts-ignore
     database_id: process.env.NOTION_DATABASE_ID,
   });
 
-  const tags = databaseData.properties.Tags.multi_select.options.map((tag) => ({
-    name: tag.name,
-    id: tag.id,
-  }));
+  // @ts-ignore
+  const tags = databaseData.properties.Tags.multi_select.options.map(
+    (tag: any) => tag.name
+  );
 
   const linkData = await notion.databases.query({
+    // @ts-ignore
     database_id: process.env.NOTION_DATABASE_ID,
     filter: getLinksFilter(),
     sorts: [
