@@ -74,7 +74,7 @@ function Book({ book }: Props) {
       <div className={styles.ratingcontainer}>
         <div className={styles.communityrating}>
           {book.avg_rating} (
-          {book.num_ratings.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")})
+          {book.num_ratings.replace(/\B(?=(\d{3})+(?!\d))/g, ",")})
         </div>
         {valueIsDefined(book.rating, "None") && (
           <div className={styles.myrating}>
