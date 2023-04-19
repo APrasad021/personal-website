@@ -41,3 +41,10 @@
   font-size: small;
   font-weight: lighter;
 }
+
+.content img {
+  width: 80vw;
+  height: auto;
+  display: block;
+  margin: 8px auto 16px;
+}
